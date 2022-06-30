@@ -1,5 +1,6 @@
 // ignore_for_file: prefer_const_constructors, prefer_final_fields, prefer_const_literals_to_create_immutables
 
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:project/onBoardScreens/onboard1.dart';
 import 'package:project/onBoardScreens/onboard2.dart';
@@ -16,6 +17,9 @@ class OnBoard extends StatefulWidget {
 class _OnBoardState extends State<OnBoard> {
   // Pages
   PageController _controller = PageController();
+
+  // On last page function
+  bool onLastPage = false;
   
   @override
   Widget build(BuildContext context) {
@@ -25,6 +29,11 @@ class _OnBoardState extends State<OnBoard> {
           //Page View
           PageView(
           controller: _controller,
+          onPageChanged: (index) {
+            setState(() {
+              onLastPage = (index == 2);
+            });
+          },
           children: [
             onboard1(),
             onboard2(),
@@ -38,7 +47,7 @@ class _OnBoardState extends State<OnBoard> {
                 children: [
                   GestureDetector(
                     onTap: () {
-                      _controller.jumpToPage(4);
+                      _controller.jumpToPage(2);
                     },
                     child: Text(
                       'Skip',
@@ -58,21 +67,45 @@ class _OnBoardState extends State<OnBoard> {
             // previous
             GestureDetector(
               onTap: () {
-                _controller.nextPage(duration: duration, curve: curve)
+                _controller.previousPage(
+                  duration: Duration(milliseconds: 400), 
+                  curve: Curves.easeIn
+                  );
               },
+              child: Icon(
+                CupertinoIcons.arrow_left,
+                color: Colors.blueAccent,
+                size: 40.0,
+              ),
             ),
 
             // dots
             SmoothPageIndicator(controller: _controller, count: 3),
 
             // next
+            onLastPage ?
             GestureDetector(
-              onTap: () {
-                _controller.nextPage(duration: duration, curve: curve)
-              },
-            ),
-            ],
-          ),
+                onTap: () {
+                  _controller.nextPage(
+                      duration: Duration(milliseconds: 400),
+                      curve: Curves.easeIn);
+                },
+                child: Text('Next'),
+                )
+              : GestureDetector(
+                      onTap: () {
+                        _controller.nextPage(
+                            duration: Duration(milliseconds: 400),
+                            curve: Curves.easeIn);
+                      },
+                      child: Icon(
+                        CupertinoIcons.arrow_right,
+                        color: Colors.blueAccent,
+                        size: 40.0,
+                      ),
+                    )
+              ],
+             ),
           )
         ],
       )
