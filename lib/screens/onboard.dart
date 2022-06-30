@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:project/onBoardScreens/onboard1.dart';
 import 'package:project/onBoardScreens/onboard2.dart';
 import 'package:project/onBoardScreens/onboard3.dart';
+import 'package:project/screens/HomePage.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class OnBoard extends StatefulWidget {
@@ -86,11 +87,16 @@ class _OnBoardState extends State<OnBoard> {
             onLastPage ?
             GestureDetector(
                 onTap: () {
-                  _controller.nextPage(
-                      duration: Duration(milliseconds: 400),
-                      curve: Curves.easeIn);
+                  Navigator.push(
+                    context, 
+                    MaterialPageRoute(
+                      builder: (context) {
+                        return HomePage();
+                       },
+                      ),
+                    );
                 },
-                child: Text('Next'),
+                child: Text('Done'),
                 )
               : GestureDetector(
                       onTap: () {
