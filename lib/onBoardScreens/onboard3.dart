@@ -9,8 +9,12 @@ class onboard3 extends StatelessWidget {
     final double height = MediaQuery.of(context).size.height;
 
     return Scaffold(
-      body: Center(
-        child: Lottie.asset('searching.json'),
+      body: SafeArea(
+        child: Container(
+          child: Center(
+            child: Lottie.asset('searching.json'),
+          ),
+        ),
       ),
     );
   }
