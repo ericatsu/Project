@@ -11,6 +11,10 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  final List<String> _listItem = [
+    'assets/images/jordan.jpg'
+  ];
+
   @override
   Widget build(BuildContext context) {
     final double height = MediaQuery.of(context).size.height;
@@ -64,7 +68,44 @@ class _HomePageState extends State<HomePage> {
                 onChanged: (value) {
                   
                 },
-              )
+              ),
+              SizedBox(
+                height: 20,
+              ),
+              Expanded(
+                child: GridView.count(
+                  crossAxisCount: 2,
+                  crossAxisSpacing: 10,
+                  mainAxisSpacing: 10,
+                  children: _listItem
+                      .map((item) => Card(
+                            color: Colors.transparent,
+                            elevation: 0,
+                            child: Container(
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(20),
+                                  image: DecorationImage(
+                                      image: AssetImage(item),
+                                      fit: BoxFit.cover)),
+                              child: Transform.translate(
+                                offset: Offset(50, -50),
+                                child: Container(
+                                  margin: EdgeInsets.symmetric(
+                                      horizontal: 65, vertical: 63),
+                                  decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(10),
+                                      color: Colors.white),
+                                  child: Icon(
+                                    Icons.bookmark_border,
+                                    size: 15,
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ))
+                      .toList(),
+                ),
+              ),
             ],
            ),
          ),
