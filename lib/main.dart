@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
+import 'package:project/screens/HomePage.dart';
 import 'package:project/screens/onBoard.dart';
 
 void main() {
@@ -15,7 +16,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {  
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: OnBoard(),
+      home: HomePage(),
      );
   }
 }
