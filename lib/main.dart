@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:project/screens/HomePage.dart';
+import 'package:project/screens/Sections.dart';
 import 'package:project/screens/onBoard.dart';
 
 void main() {

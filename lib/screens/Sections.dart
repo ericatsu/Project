@@ -3,19 +3,15 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class HomePage extends StatefulWidget {
-  const HomePage({ Key? key }) : super(key: key);
+class Sections extends StatefulWidget {
+  const Sections({Key? key}) : super(key: key);
 
   @override
-  State<HomePage> createState() => _HomePageState();
+  State<Sections> createState() => _SectionsState();
 }
 
-class _HomePageState extends State<HomePage> {
-  final List<String> _listItem = [
-    'assets/images/jordan.jpg',
-    'assets/images/jordan.jpg'
-  ];
-
+class _SectionsState extends State<Sections> {
+  final List<String> _listItem = ['assets/images/jordan.jpg'];
 
   @override
   Widget build(BuildContext context) {
@@ -24,16 +20,16 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       backgroundColor: Color.fromARGB(255, 255, 255, 255),
       appBar: AppBar(
-        backgroundColor:  Color.fromRGBO(45, 29, 76, 2),
+        backgroundColor: Color.fromRGBO(45, 29, 76, 2),
         elevation: 0,
-        title:  Text('CONSTITUTIONS'),
+        title: Text('CONSTITUTIONS'),
         centerTitle: true,
-        actions:  [
+        actions: [
           IconButton(
-            onPressed: (){
-            // Action here
-          }, 
-          icon: Icon(Icons.share))
+              onPressed: () {
+                // Action here
+              },
+              icon: Icon(Icons.share))
         ],
       ),
       drawer: Drawer(
@@ -41,10 +37,13 @@ class _HomePageState extends State<HomePage> {
           color: Color.fromARGB(255, 141, 123, 175),
           child: ListView(
             children: [
-              DrawerHeader(child: Center(
-                child: Text('L O G O',
-                style: TextStyle(fontSize: 34),
-                ),),
+              DrawerHeader(
+                child: Center(
+                  child: Text(
+                    'L O G O',
+                    style: TextStyle(fontSize: 34),
+                  ),
+                ),
               ),
               ListTile(
                 leading: Icon(Icons.home),
@@ -62,21 +61,19 @@ class _HomePageState extends State<HomePage> {
       ),
       body: SafeArea(
         child: Container(
-           padding: EdgeInsets.all(20),
-           child: Column(
+          padding: EdgeInsets.all(20),
+          child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               CupertinoSearchTextField(
-                onChanged: (value) {
-                  
-                },
+                onChanged: (value) {},
               ),
               SizedBox(
                 height: 20,
               ),
               Expanded(
                 child: GridView.count(
-                  crossAxisCount: 2,
+                  crossAxisCount: 1,
                   crossAxisSpacing: 10,
                   mainAxisSpacing: 10,
                   children: _listItem
@@ -88,23 +85,30 @@ class _HomePageState extends State<HomePage> {
                                   borderRadius: BorderRadius.circular(20),
                                   image: DecorationImage(
                                       image: AssetImage(item),
-                                      fit: BoxFit.fitWidth
-                                      ),
-                                    ),
+                                      fit: BoxFit.cover)),
+                              child: Transform.translate(
+                                offset: Offset(50, -50),
+                                child: Container(
+                                  margin: EdgeInsets.symmetric(
+                                      horizontal: 63, vertical: 63),
+                                  decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(10),
+                                      color: Colors.white),
                                   child: Text(
                                     'Some text',
                                     style: TextStyle(fontSize: 22),
                                   ),
                                 ),
-                          ),
-                          )
+                              ),
+                            ),
+                          ))
                       .toList(),
                 ),
               ),
             ],
-           ),
-         ),
+          ),
         ),
+      ),
     );
   }
 }
