@@ -81,24 +81,33 @@ class _HomePageState extends State<HomePage> {
                   mainAxisSpacing: 10,
                   children: _listItem
                       .map((item) => Card(
-                            color: Colors.transparent,
-                            elevation: 0,
-                            child: Container(
-                              decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(20),
-                                  image: DecorationImage(
-                                      image: AssetImage(item),
-                                      fit: BoxFit.fitWidth
-                                      ),
-                                    ),
-                                  child: Text(
-                                    'Some text',
-                                    style: TextStyle(fontSize: 22),
-                                  ),
+                        elevation: 2,
+                        color: Colors.blueAccent[75],
+                        child: SizedBox(
+                          width: 50,
+                          height: 300,
+                          child: Padding(
+                            padding: EdgeInsets.only(top: 2.0, bottom: 5.0),
+                            child: Column(
+                              children: [
+                                CircleAvatar(
+                                  radius: 70,
+                                  backgroundColor: Colors.amber,
+                                  foregroundImage: AssetImage(item),
                                 ),
-                          ),
-                          )
-                      .toList(),
+                                SizedBox(height: 10,),
+                                Text('Text Here',
+                                style: TextStyle(
+                                  fontSize: 20,
+                                  color: Colors.black,
+                                ),
+                                )
+                              ],
+                             ),
+                            ),
+                        ),
+                      ),
+                    ).toList(),
                 ),
               ),
             ],
