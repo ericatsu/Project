@@ -12,8 +12,10 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   final List<String> _listItem = [
-    'assets/images/jordan.jpg',
-    'assets/images/jordan.jpg'
+    'Some text',
+    'Some text 2',
+    'Some text 3',
+    'Some text 4',
   ];
 
 
@@ -74,6 +76,7 @@ class _HomePageState extends State<HomePage> {
               SizedBox(
                 height: 20,
               ),
+              //TODO: Overflow when I change screen(pixel)
               Expanded(
                 child: GridView.count(
                   crossAxisCount: 2,
@@ -92,11 +95,13 @@ class _HomePageState extends State<HomePage> {
                               children: [
                                 CircleAvatar(
                                   radius: 70,
-                                  backgroundColor: Colors.amber,
-                                  foregroundImage: AssetImage(item),
+                                  backgroundColor: Colors.white,
+                                  child: Icon(Icons.book_online_outlined,
+                                  size: 50.0,
+                                  ),
                                 ),
                                 SizedBox(height: 10,),
-                                Text('Text Here',
+                                Text(item,
                                 style: TextStyle(
                                   fontSize: 20,
                                   color: Colors.black,
@@ -116,4 +121,7 @@ class _HomePageState extends State<HomePage> {
         ),
     );
   }
+}
+
+class TODO {
 }
