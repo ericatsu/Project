@@ -11,7 +11,8 @@ class Sections extends StatefulWidget {
 }
 
 class _SectionsState extends State<Sections> {
-  final List<String> _listItem = ['assets/images/jordan.jpg'];
+  List Names = ['them text', 'Another thing'];
+  List Desc = ['them text', 'Another thing'];
 
   @override
   Widget build(BuildContext context) {
@@ -72,37 +73,51 @@ class _SectionsState extends State<Sections> {
                 height: 20,
               ),
               Expanded(
-                child: GridView.count(
-                  crossAxisCount: 1,
-                  crossAxisSpacing: 10,
-                  mainAxisSpacing: 10,
-                  children: _listItem
-                      .map((item) => Card(
-                            color: Colors.transparent,
-                            elevation: 0,
-                            child: Container(
-                              decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(20),
-                                  image: DecorationImage(
-                                      image: AssetImage(item),
-                                      fit: BoxFit.cover)),
-                              child: Transform.translate(
-                                offset: Offset(50, -50),
-                                child: Container(
-                                  margin: EdgeInsets.symmetric(
-                                      horizontal: 63, vertical: 63),
-                                  decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(10),
-                                      color: Colors.white),
-                                  child: Text(
-                                    'Some text',
-                                    style: TextStyle(fontSize: 22),
-                                  ),
-                                ),
+                child: ListView.builder(
+                  itemCount: Names.length,
+                  itemBuilder: (BuildContext context, int index) => Container(
+                   width: MediaQuery.of(context).size.width,
+                   padding: EdgeInsets.symmetric(horizontal: 10.0, vertical: 5.0),
+                   child: Card(
+                     elevation: 5.0,
+                     shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(0.0),
+                     ),
+                     child: Container(
+                     width: MediaQuery.of(context).size.width,
+                     padding: EdgeInsets.symmetric(horizontal: 10.0, vertical: 10.0),
+                     child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Row(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Container(
+                              width: 55.0,
+                              height: 55.0,
+                              child: CircleAvatar(
+                                radius: 70,
+                                  backgroundColor: Colors.white,
+                                  child: Icon(Icons.book_online_outlined,
+                                  size: 50.0,)
                               ),
                             ),
-                          ))
-                      .toList(),
+                            SizedBox(width: 5.0,),
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(Names[index]),
+                                Text(Desc[index]),
+                              ],
+                            )
+                          ],
+                        ),
+                      ],
+                      ),
+                     ),
+                   ),
+                  ),
                 ),
               ),
             ],
