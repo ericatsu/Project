@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
+// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, unnecessary_string_interpolations
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -11,8 +11,8 @@ class Sections extends StatefulWidget {
 }
 
 class _SectionsState extends State<Sections> {
-  List Names = ['them text', 'Another thing'];
-  List Desc = ['them text', 'Another thing'];
+  List<String> names = ['them text', 'Another thing', 'Some thing'];
+  List<String> desc = ['second text', 'why not thing', 'That not thing'];
 
   @override
   Widget build(BuildContext context) {
@@ -74,7 +74,8 @@ class _SectionsState extends State<Sections> {
               ),
               Expanded(
                 child: ListView.builder(
-                  itemCount: Names.length,
+                  itemCount: names.length,
+                  shrinkWrap: true,
                   itemBuilder: (BuildContext context, int index) => Container(
                    width: MediaQuery.of(context).size.width,
                    padding: EdgeInsets.symmetric(horizontal: 10.0, vertical: 5.0),
@@ -107,8 +108,8 @@ class _SectionsState extends State<Sections> {
                             Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                Text(Names[index]),
-                                Text(Desc[index]),
+                                Text('${names[index]}', style: TextStyle(color: Colors.black, fontSize: 18.0, fontWeight: FontWeight.bold)),
+                                Text('${desc[index]}', style: TextStyle(color: Colors.grey, fontSize: 18.0))
                               ],
                             )
                           ],
